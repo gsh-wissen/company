@@ -4,9 +4,9 @@ pipeline {
         maven '3.8.4'
     }
       stages {
-        stage('Hello') {
+        stage('Initializing') {
             steps {
-                echo 'Hello World'
+                echo 'company-management-system service'
             }
         }
         stage('Build') {
