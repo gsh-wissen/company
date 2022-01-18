@@ -15,9 +15,9 @@ pipeline {
                 sh 'mvn clean install -DskipTests=true'
             }
         }
-        stage('Test') {
+        stage('Docker') {
             steps {
-                echo 'Test..'
+                sh 'docker build -f Dockerfile -t company-management-system.jar .'
             }
         }
         stage('Deploy') {
