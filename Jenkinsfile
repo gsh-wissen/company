@@ -17,7 +17,9 @@ pipeline {
         }
         stage('Docker') {
             steps {
-                sh 'docker build -f Dockerfile -t company-management-system.jar .'
+                script {
+                         docker.build("company-management-system.jar")
+                        }
             }
         }
         stage('Deploy') {
