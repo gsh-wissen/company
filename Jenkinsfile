@@ -25,7 +25,7 @@ pipeline {
         stage('ECR') {
             steps {
                script {
-                         docker.withRegistry("https://387115656091.dkr.ecr.ap-south-1.amazonaws.com/ecr-test", "ecr:mumbai:387115656091") {
+                         docker.withRegistry("https://387115656091.dkr.ecr.ap-south-1.amazonaws.com/ecr-test", "ecr:ap-south-1:387115656091") {
                          docker.image("company-management-system.jar").push()
                         }
                }
