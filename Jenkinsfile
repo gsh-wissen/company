@@ -22,9 +22,13 @@ pipeline {
                         }
             }
         }
-        stage('Deploy') {
+        stage('ECR') {
             steps {
-                echo 'Deploying..'
+               script {
+                         docker.withRegistry("https://387115656091.dkr.ecr.ap-south-1.amazonaws.com/ecr-test", "ecr:ap-south-1:AWS-credentials") {
+                         docker.image("company-management-system.jar").push()
+                        }
+               }
             }
         }
         stage('Release') {
