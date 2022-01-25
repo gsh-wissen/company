@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'mvn -version'
-                sh 'mvn clean install -DskipTests=true'
+                sh 'mvn clean install'
             }
         }
         stage('Docker') {
@@ -26,10 +26,10 @@ pipeline {
             steps {
                script {
                          docker.withRegistry("https://387115656091.dkr.ecr.ap-south-1.amazonaws.com/ecr-test", "ecr:ap-south-1:AWS-credentials") {
-                         docker.image("company-management-system.jar").push()
-                        }
-               }
-            }
+                            docker.image("company-management-system.jar").push()
+                          }
+                       }
+                }
         }
         stage('Release') {
             steps {
